@@ -10,9 +10,4 @@ public class ApplicationController {
     public String goHome() {
         return "home";
     }
-
-    @GetMapping("/index")
-    public String goIndex() {
-        return "index";
-    }
 }
