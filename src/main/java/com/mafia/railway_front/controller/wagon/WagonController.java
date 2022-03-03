@@ -1,27 +1,42 @@
 package com.mafia.railway_front.controller.wagon;
 
-import com.mafia.railway_api.model.receive.WagonReceiveDTO;
+
+import com.mafia.railway_front.controller.BaseController;
+import com.mafia.railway_front.model.receive.UserReceiveDTO;
+import com.mafia.railway_front.model.receive.WagonReceiveDTO;
+import com.mafia.railway_front.model.response.ApiResponse;
+import com.mafia.railway_front.service.WagonService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import uz.mafia.railway_frontend.controller.BaseController;
+
+import java.util.List;
 
 
 @RequiredArgsConstructor
 @RequestMapping("api/wagon")
 public class WagonController implements BaseController< WagonReceiveDTO > {
-    private final WagonController wagonController;
+    @Autowired
+    private final WagonService wagonService;
 
     @PostMapping("/add")
     @Override
     public String add(Model model, WagonReceiveDTO wagonReceiveDTO) {
-        return null;
+        ApiResponse apiResponse = wagonService.add(wagonReceiveDTO);
+        list(model);
+        return "index";
     }
 
     @GetMapping("/list")
     @Override
     public String list(Model model) {
-        return null;
+        ApiResponse apiResponse = wagonService.list();
+        List< WagonReceiveDTO > list = (List<WagonReceiveDTO>) apiResponse.getData();
+        model.addAttribute("status", apiResponse.getStatusCode());
+        model.addAttribute("message", apiResponse.getMessage());
+        model.addAttribute("list", list);
+        return "index";
     }
 
     @GetMapping("/get/{id}")

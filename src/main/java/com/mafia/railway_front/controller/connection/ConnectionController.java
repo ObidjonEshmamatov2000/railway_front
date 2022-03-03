@@ -1,13 +1,18 @@
 package com.mafia.railway_front.controller.connection;
 
 
-import com.mafia.railway_api.model.receive.ConnectionReceiveDTO;
+
+import com.mafia.railway_front.controller.BaseController;
+import com.mafia.railway_front.model.receive.ConnectionReceiveDTO;
+import com.mafia.railway_front.model.receive.UserReceiveDTO;
+import com.mafia.railway_front.model.response.ApiResponse;
+import com.mafia.railway_front.service.ConnectionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import uz.mafia.railway_frontend.controller.BaseController;
-import uz.mafia.railway_frontend.service.ConnectionService;
+
+import java.util.List;
 
 
 @RestController
@@ -20,13 +25,20 @@ public class ConnectionController implements BaseController< ConnectionReceiveDT
     @PostMapping("/add")
     @Override
     public String add(Model model,ConnectionReceiveDTO connectionReceiveDTO) {
-        return null;
+        ApiResponse apiResponse = connectionService.add(connectionReceiveDTO);
+        list(model);
+        return "index";
     }
 
     @GetMapping("/list")
     @Override
     public String list(Model model) {
-        return null;
+        ApiResponse apiResponse = connectionService.list();
+        List< ConnectionReceiveDTO > list = (List<ConnectionReceiveDTO>) apiResponse.getData();
+        model.addAttribute("status", apiResponse.getStatusCode());
+        model.addAttribute("message", apiResponse.getMessage());
+        model.addAttribute("list", list);
+        return "index";
     }
 
     @GetMapping("/get/{id}")

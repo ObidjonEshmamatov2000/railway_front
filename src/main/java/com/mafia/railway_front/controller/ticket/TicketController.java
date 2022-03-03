@@ -1,27 +1,42 @@
 package com.mafia.railway_front.controller.ticket;
-import com.mafia.railway_api.model.receive.TicketReceiveDTO;
+
+import com.mafia.railway_front.controller.BaseController;
+import com.mafia.railway_front.model.receive.TicketReceiveDTO;
+import com.mafia.railway_front.model.receive.UserReceiveDTO;
+import com.mafia.railway_front.model.response.ApiResponse;
+import com.mafia.railway_front.service.TicketService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import uz.mafia.railway_frontend.controller.BaseController;
-import uz.mafia.railway_frontend.service.TicketService;
+
+import java.util.List;
 
 
 @RequiredArgsConstructor
 @RequestMapping("api/ticket")
 public class TicketController implements BaseController< TicketReceiveDTO > {
+
+    @Autowired
     private  final TicketService ticketService;
 
     @PostMapping("/add")
     @Override
     public String add(Model model, TicketReceiveDTO ticketReceiveDTO) {
-        return null;
+        ApiResponse apiResponse = ticketService.add(ticketReceiveDTO);
+        list(model);
+        return "index";
     }
 
     @GetMapping("/list")
     @Override
     public String list(Model model) {
-        return null;
+        ApiResponse apiResponse = ticketService.list();
+        List< TicketReceiveDTO > list = (List<TicketReceiveDTO>) apiResponse.getData();
+        model.addAttribute("status", apiResponse.getStatusCode());
+        model.addAttribute("message", apiResponse.getMessage());
+        model.addAttribute("list", list);
+        return "index";
     }
 
     @GetMapping("/get/{id}")

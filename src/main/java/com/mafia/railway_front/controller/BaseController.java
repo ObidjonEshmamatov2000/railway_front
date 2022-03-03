@@ -1,17 +1,14 @@
 package com.mafia.railway_front.controller;
-
-
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
-import javax.persistence.MappedSuperclass;
+
 
 
 
 
 @RestController
-@MappedSuperclass
 public interface BaseController<T> {
 
 

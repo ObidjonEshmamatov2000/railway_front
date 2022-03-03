@@ -2,15 +2,15 @@ package com.mafia.railway_front.service;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
-import com.mafia.railway_api.model.receive.TicketReceiveDTO;
-import com.mafia.railway_api.model.response.ApiResponse;
+import com.mafia.railway_front.model.receive.TicketReceiveDTO;
+import com.mafia.railway_front.model.response.ApiResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 @Service
 @RequiredArgsConstructor
-public class TicketService implements BaseService< TicketReceiveDTO> {
+public class TicketService implements BaseService< TicketReceiveDTO > {
 
     private final RestTemplate restTemplate;
     private final ObjectMapper objectMapper;

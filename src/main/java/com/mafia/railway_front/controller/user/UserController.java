@@ -1,15 +1,12 @@
 package com.mafia.railway_front.controller.user;
-
-
-import com.mafia.railway_api.entity.user.UserModel;
-import com.mafia.railway_api.model.receive.UserReceiveDTO;
-import com.mafia.railway_api.model.response.ApiResponse;
+import com.mafia.railway_front.controller.BaseController;
+import com.mafia.railway_front.model.receive.UserReceiveDTO;
+import com.mafia.railway_front.model.response.ApiResponse;
+import com.mafia.railway_front.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import uz.mafia.railway_frontend.controller.BaseController;
-import uz.mafia.railway_frontend.service.UserService;
 
 import java.util.List;
 
@@ -19,7 +16,7 @@ import java.util.List;
 public class UserController implements BaseController< UserReceiveDTO > {
 
     @Autowired
-    UserService userService;
+   private final UserService userService;
 
 //    @PostMapping("/add")
 //    public String addUser(Model model, @ModelAttribute UserReceiveDTO userReceiveDTO ) {
@@ -53,7 +50,7 @@ public class UserController implements BaseController< UserReceiveDTO > {
     @Override
     public String list(Model model) {
         ApiResponse apiResponse = userService.list();
-        List< UserModel > list = (List<UserModel>) apiResponse.getData();
+        List< UserReceiveDTO > list = (List<UserReceiveDTO>) apiResponse.getData();
         model.addAttribute("status", apiResponse.getStatusCode());
         model.addAttribute("message", apiResponse.getMessage());
         model.addAttribute("list", list);
@@ -77,4 +74,6 @@ public class UserController implements BaseController< UserReceiveDTO > {
     public String delete(Model model,Long id) {
         return null;
     }
+
+
 }

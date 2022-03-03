@@ -1,6 +1,6 @@
 package com.mafia.railway_front.util;
 
-import com.mafia.railway_api.model.response.ApiResponse;
+import com.mafia.railway_front.model.response.ApiResponse;
 import org.springframework.stereotype.Component;
 
 @Component

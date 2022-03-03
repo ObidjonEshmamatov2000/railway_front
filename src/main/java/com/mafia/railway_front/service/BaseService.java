@@ -2,13 +2,14 @@ package com.mafia.railway_front.service;
 
 
 
+import com.mafia.railway_front.model.response.ApiResponse;
 import org.springframework.stereotype.Service;
 
 
 @Service
 public interface BaseService <T>{
 
-    String BASE_URL = "http://127.0.0.1:8080";
+    String BASE_URL = "http://192.168.43.24:8080";
 
     //USER
     String ADD_USER_URL = "/api/user/add";

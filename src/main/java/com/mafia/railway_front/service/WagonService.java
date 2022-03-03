@@ -3,8 +3,8 @@ package com.mafia.railway_front.service;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
-import com.mafia.railway_api.model.receive.WagonReceiveDTO;
-import com.mafia.railway_api.model.response.ApiResponse;
+import com.mafia.railway_front.model.receive.WagonReceiveDTO;
+import com.mafia.railway_front.model.response.ApiResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,7 +25,6 @@ public class WagonService implements BaseService< WagonReceiveDTO > {
     public ApiResponse add(WagonReceiveDTO wagonReceiveDTO) {
         String response
                 = restTemplate.postForObject(BASE_URL + ADD_WAGON_URL, wagonReceiveDTO, String.class);
-
         try {
             return objectMapper.readValue(response, ApiResponse.class);
         } catch (JsonProcessingException e) {
