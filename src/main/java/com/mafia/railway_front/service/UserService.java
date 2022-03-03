@@ -68,7 +68,13 @@ public class UserService implements BaseService< UserReceiveDTO > {
 
     @Override
     public ApiResponse get(Long id) {
-        return null;
+        String response = restTemplate.getForObject("/api/user/add/api/user/get/1", String.class);
+        try {
+            return gson.fromJson(response, ApiResponse.class);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     @Override

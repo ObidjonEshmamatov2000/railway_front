@@ -43,7 +43,7 @@ public class RailwayConnectionController implements BaseController< RailwayConne
 
     @GetMapping("/get/{id}")
     @Override
-    public String get(Model model,Long id, RailwayConnectionReceiveDTO railwayConnectionReceiveDTO) {
+    public String get(Model model,Long id) {
         return null;
     }
 

@@ -1,5 +1,6 @@
 package com.mafia.railway_front.controller.user;
 import com.mafia.railway_front.controller.BaseController;
+import com.mafia.railway_front.entity.user.UserEntity;
 import com.mafia.railway_front.model.receive.UserReceiveDTO;
 import com.mafia.railway_front.model.response.ApiResponse;
 import com.mafia.railway_front.service.UserService;
@@ -10,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-
+@RestController
 @RequestMapping("/admin/user")
 @RequiredArgsConstructor
 public class UserController implements BaseController< UserReceiveDTO > {
@@ -50,17 +51,23 @@ public class UserController implements BaseController< UserReceiveDTO > {
     @Override
     public String list(Model model) {
         ApiResponse apiResponse = userService.list();
-        List< UserReceiveDTO > list = (List<UserReceiveDTO>) apiResponse.getData();
+        List< UserEntity> list = (List<UserEntity>) apiResponse.getData();
+        System.out.println(list.get(0).getEmail());
         model.addAttribute("status", apiResponse.getStatusCode());
         model.addAttribute("message", apiResponse.getMessage());
         model.addAttribute("list", list);
-        return "index";
+        return "";
     }
 
     @GetMapping("/get/{id}")
     @Override
-    public String get(Model model,Long id, UserReceiveDTO userReceiveDTO) {
-        return null;
+    public String get(Model model,Long id) {
+        ApiResponse apiResponse = userService.get(id);
+        List< UserEntity > list = (List<UserEntity>) apiResponse.getData();
+        model.addAttribute("status", apiResponse.getStatusCode());
+        model.addAttribute("message", apiResponse.getMessage());
+        model.addAttribute("list", list);
+        return "index";
     }
 
     @PutMapping("/update/{id}")

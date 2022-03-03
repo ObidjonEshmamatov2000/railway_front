@@ -41,7 +41,7 @@ public class WagonController implements BaseController< WagonReceiveDTO > {
 
     @GetMapping("/get/{id}")
     @Override
-    public String get(Model model,Long id, WagonReceiveDTO wagonReceiveDTO) {
+    public String get(Model model,Long id) {
         return null;
     }
 

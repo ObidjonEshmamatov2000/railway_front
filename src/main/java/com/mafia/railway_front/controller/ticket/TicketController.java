@@ -41,7 +41,7 @@ public class TicketController implements BaseController< TicketReceiveDTO > {
 
     @GetMapping("/get/{id}")
     @Override
-    public String get(Model model,Long id, TicketReceiveDTO ticketReceiveDTO) {
+    public String get(Model model,Long id) {
         return null;
     }
 

@@ -18,7 +18,7 @@ public interface BaseController<T> {
     public String list(Model model);
 
 
-    public String get(Model model, @PathVariable Long id, @ModelAttribute T t);
+    public String get(Model model, @PathVariable Long id);
 
 
     public String update(Model model, @PathVariable Long id,@ModelAttribute T t);

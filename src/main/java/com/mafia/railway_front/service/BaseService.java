@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 @Service
 public interface BaseService <T>{
 
-    String BASE_URL = "http://192.168.43.24:8080";
+    String BASE_URL = "http://10.100.201.165:8080";
 
     //USER
     String ADD_USER_URL = "/api/user/add";

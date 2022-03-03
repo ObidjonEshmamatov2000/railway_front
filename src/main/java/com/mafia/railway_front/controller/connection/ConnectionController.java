@@ -9,17 +9,17 @@ import com.mafia.railway_front.model.response.ApiResponse;
 import com.mafia.railway_front.service.ConnectionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 
-@RestController
+@Controller
 @RequiredArgsConstructor
 @RequestMapping("api/connection")
 public class ConnectionController implements BaseController< ConnectionReceiveDTO > {
-    @Autowired
     private final ConnectionService connectionService;
 
     @PostMapping("/add")
@@ -43,7 +43,7 @@ public class ConnectionController implements BaseController< ConnectionReceiveDT
 
     @GetMapping("/get/{id}")
     @Override
-    public String get(Model model,Long id, ConnectionReceiveDTO connectionReceiveDTO) {
+    public String get(Model model,Long id) {
         return null;
     }
 

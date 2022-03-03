@@ -9,11 +9,13 @@ import com.mafia.railway_front.model.response.ApiResponse;
 import com.mafia.railway_front.service.RailwayService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@Controller
 @RequiredArgsConstructor
 @RequestMapping("api/railway")
 public class RailwayController implements BaseController< RailwayReceiveDTO > {
@@ -42,7 +44,7 @@ public class RailwayController implements BaseController< RailwayReceiveDTO > {
 
     @GetMapping("/get/{id}")
     @Override
-    public String get(Model model,Long id, RailwayReceiveDTO railwayReceiveDTO) {
+    public String get(Model model,Long id) {
         return null;
     }
 

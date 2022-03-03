@@ -40,7 +40,7 @@ public class TrainController implements BaseController< TrainReceiveDTO > {
 
     @GetMapping("/get/{id}")
     @Override
-    public String get(Model model,Long id, TrainReceiveDTO trainReceiveDTO) {
+    public String get(Model model,Long id) {
         return null;
     }
 
