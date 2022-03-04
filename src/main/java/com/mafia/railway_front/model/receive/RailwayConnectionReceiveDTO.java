@@ -17,5 +17,6 @@ public class RailwayConnectionReceiveDTO {
 
     @JsonProperty("is_first")
     private boolean isFirst;
+
     private int ordering;
 }

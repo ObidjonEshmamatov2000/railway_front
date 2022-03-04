@@ -69,4 +69,29 @@ public class AdminController {
     public String goWidgets() {
         return "widgets";
     }
+
+    @GetMapping("/addRailway")
+    public String addRailway() {
+        return "addRailway";
+    }
+
+    @GetMapping("/addConnection")
+    public String addConnection() {
+        return "addConnection";
+    }
+
+    @GetMapping("/addRailwayConnection")
+    public String addRailwayConnection() {
+        return "addRailwayConnection";
+    }
+
+    @GetMapping("/addTrain")
+    public String addTrain() {
+        return "addTrain";
+    }
+
+    @GetMapping("/addWagon")
+    public String addWagon() {
+        return "addWagon";
+    }
 }
